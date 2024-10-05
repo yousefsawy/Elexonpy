@@ -16,6 +16,9 @@ import unittest
 
 import elexonpy
 from elexonpy.api.datasets_api import DatasetsApi  # noqa: E501
+import requests
+
+
 from elexonpy.rest import ApiException
 
 
@@ -33,13 +36,20 @@ class TestDatasetsApi(unittest.TestCase):
 
         Amount Of Balancing Reserves Under Contract (ABUC / B1720)  # noqa: E501
         """
-        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime | 
-        publish_date_time_to = '2023-08-22T07:43:04Z'  # datetime | 
 
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2023-08-22T07:43:04Z'  # datetime 
+
+        # Calling the api
         response = self.api.datasets_abuc_get(publish_date_time_from, publish_date_time_to)
 
         # Check if the response object is not None
         self.assertIsNotNone(response)
+
+
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
 
         # Check if the response contains data
         self.assertTrue(response.to_dict().get('data'))
@@ -49,84 +59,265 @@ class TestDatasetsApi(unittest.TestCase):
 
         Amount Of Balancing Reserves Under Contract (ABUC / B1720) stream  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2023-08-22T07:43:04Z'  # datetime 
 
+        # Calling the api
+        response = self.api.datasets_abuc_stream_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #check if response is: (list)
+        self.assertIsInstance(response, list)
+
+        #check that response contains data
+        self.assertTrue(len(response)> 0)
+
+
+    #Todo: Fix, Generating an error when calling the api
     def test_datasets_agpt_get(self):
         """Test case for datasets_agpt_get
 
         Actual Aggregated Generation Per Type (AGPT / B1620)  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2022-08-23T07:43:04Z'  # datetime 
+
+        response = self.api.datasets_agpt_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsActualAggregatedGenerationPerTypeDatasetRow)
+
+        # Check if the response contains data
+        self.assertTrue(response.to_dict().get('data'))
+
+
+        
 
     def test_datasets_agpt_stream_get(self):
         """Test case for datasets_agpt_stream_get
 
         Actual Aggregated Generation Per Type (AGPT / B1620) stream  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2022-08-23T07:43:04Z'  # datetime 
+
+        # Calling the api
+        response = self.api.datasets_agpt_stream_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #check if response is: (list)
+        self.assertIsInstance(response, list)
+
+        #check that response contains data
+        self.assertTrue(len(response)> 0)
+
 
     def test_datasets_agws_get(self):
         """Test case for datasets_agws_get
 
         Actual Or Estimated Wind And Solar Power Generation (AGWS / B1630)  # noqa: E501
         """
-        pass
+
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2022-08-23T07:43:04Z'  # datetime 
+
+        response = self.api.datasets_agws_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsActualGenerationWindSolarDatasetRow)
+
+        # Check if the response contains data
+        self.assertTrue(response.to_dict().get('data'))
+
 
     def test_datasets_agws_stream_get(self):
         """Test case for datasets_agws_stream_get
 
         Actual Or Estimated Wind And Solar Power Generation (AGWS / B1630) stream  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2022-08-23T07:43:04Z'  # datetime 
+
+        # Calling the api
+        response = self.api.datasets_agws_stream_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #check if response is: (list)
+        self.assertIsInstance(response, list)
+
+        #check that response contains data
+        self.assertTrue(len(response)> 0)
+
 
     def test_datasets_aobe_get(self):
         """Test case for datasets_aobe_get
 
         Accepted Offered Balancing Energy (AOBE)  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2024-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2024-08-25T07:43:04Z'  # datetime 
+
+        response = self.api.datasets_aobe_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAobeDatasetRow)
+
+        # Check if the response contains data
+        self.assertTrue(response.to_dict().get('data'))
+
+
 
     def test_datasets_aobe_stream_get(self):
         """Test case for datasets_aobe_stream_get
 
         Accepted Offered Balancing Energy (AOBE) stream  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2024-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2024-08-23T07:43:04Z'  # datetime 
+
+        # Calling the api
+        response = self.api.datasets_aobe_stream_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #check if response is: (list)
+        self.assertIsInstance(response, list)
+
+        #check that response contains data
+        self.assertTrue(len(response)> 0)
+
 
     def test_datasets_atl_get(self):
         """Test case for datasets_atl_get
 
         Actual Total Load Per Bidding Zone (ATL / B0610)  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2024-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2024-08-25T07:43:04Z'  # datetime 
+
+        response = self.api.datasets_atl_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsActualTotalLoadPerBiddingZoneDatasetRow)
+
+        # Check if the response contains data
+        self.assertTrue(response.to_dict().get('data'))
+
+        
 
     def test_datasets_atl_stream_get(self):
         """Test case for datasets_atl_stream_get
 
         Actual Total Load Per Bidding Zone (ATL / B0610) stream  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2024-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2024-08-23T07:43:04Z'  # datetime 
+
+        # Calling the api
+        response = self.api.datasets_atl_stream_get(publish_date_time_from, publish_date_time_to)
+
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
+
+        #check if response is: (list)
+        self.assertIsInstance(response, list)
+
+        #check that response contains data
+        self.assertTrue(len(response)> 0)
+
 
     def test_datasets_b1610_get(self):
         """Test case for datasets_b1610_get
 
         Actual Generation Output Per Generation Unit (B1610)  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2022-08-12'  # datetime
+        settlement_period = "10"
+        # Make the API call
+        response = self.api.datasets_b1610_get(publish_date_time_from, settlement_period)
 
-    def test_datasets_b1610_stream_get(self):
-        """Test case for datasets_b1610_stream_get
+        # Check if the response object is not None
+        self.assertIsNotNone(response)
 
-        Actual Generation Output Per Generation Unit (B1610) stream  # noqa: E501
-        """
-        pass
+        #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsActualGenerationOutputPerGenerationUnitDatasetResponse)
+
+        # Check if the response contains data
+        self.assertTrue(response.to_dict().get('data'))
+
+
+    #Todo: Uncomment this
+    # def test_datasets_b1610_stream_get(self):
+    #     """Test case for datasets_b1610_stream_get
+
+    #     Actual Generation Output Per Generation Unit (B1610) stream  # noqa: E501
+    #     """
+    #     # Setting the parameters with arbitrary values
+    #     publish_date_time_from = '2024-08-22T07:43:04Z'  # datetime
+    #     publish_date_time_to = '2024-08-23T07:43:04Z'  # datetime 
+
+    #     # Calling the api
+    #     response = self.api.datasets_b1610_stream_get(publish_date_time_from, publish_date_time_to)
+
+    #     # Check if the response object is not None
+    #     self.assertIsNotNone(response)
+
+    #     #check if response is: (list)
+    #     self.assertIsInstance(response, list)
+
+    #     #check that response contains data
+    #     self.assertTrue(len(response)> 0)
+
 
     def test_datasets_beb_get(self):
         """Test case for datasets_beb_get
 
         Balancing Energy Bids (BEB)  # noqa: E501
         """
-        pass
+        # Setting the parameters with arbitrary values
+        publish_date_time_from = '2023-08-22T07:43:04Z'  # datetime
+        publish_date_time_to = '2023-08-23T07:43:04Z'  # datetime 
+
+        response = self.api.datasets_beb_get(publish_date_time_from, publish_date_time_to)
+
+        # # Check if the response object is not None
+        # self.assertIsNotNone(response)
+
+        # #Check that type is: (InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsAbucDatasetRow)
+        # self.assertIsInstance(response, elexonpy.models.InsightsApiModelsResponsesDatasetResponse1InsightsApiModelsResponsesTransparencyDatasetRowsBebDatasetRow)
+
+        # # Check if the response contains data
+        # self.assertTrue(response.to_dict().get('data'))
+
 
     def test_datasets_beb_stream_get(self):
         """Test case for datasets_beb_stream_get
